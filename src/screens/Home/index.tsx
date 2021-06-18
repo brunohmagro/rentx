@@ -1,5 +1,11 @@
 import React from 'react'
 
-import { Container } from './styles'
+import { Container, Title } from './styles'
 
-export const Home: React.FC = () => <Container />
+export const Home: React.FC = () => {
+  return (
+    <Container>
+      <Title>Home</Title>
+    </Container>
+  )
+}
