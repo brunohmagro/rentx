@@ -15,17 +15,7 @@ import {
 
 import GasolineSvg from '../../assets/gasoline.svg'
 
-interface Rent {
-  period: string
-  price: number
-}
-
-interface CarProps {
-  brand: string
-  name: string
-  rent: Rent
-  thumbnail: string
-}
+import { CarProps } from './interfaces'
 
 export const Car: React.FC<CarProps> = ({ brand, name, rent, thumbnail }: CarProps) => {
   return (

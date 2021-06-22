@@ -10,7 +10,7 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo'
 
-import { Home } from './src/screens/Home'
+import { CarDetails } from './src/screens/CarDetails'
 
 import theme from './src/global/styles/theme'
 
@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <CarDetails />
     </ThemeProvider>
   )
 }

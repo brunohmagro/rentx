@@ -1,5 +1,8 @@
+import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 import { RFValue } from 'react-native-responsive-fontsize'
+
+import { CarProps } from '../../components/Car/interfaces'
 
 export const Container = styled.View`
   flex: 1;
@@ -26,3 +29,10 @@ export const TotalCars = styled.Text`
   font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.fonts.primary.regular};
 `
+
+export const CarList = styled(FlatList as new () => FlatList<CarProps>).attrs({
+  contentContainerStyle: {
+    padding: 24,
+  },
+  showVerticalScrollIndicator: false,
+})``
