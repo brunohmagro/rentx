@@ -25,7 +25,10 @@ import {
   Price,
   Acessories,
   About,
+  Footer,
+  FooterContent,
 } from './styles'
+import { Button } from '../../components/Button'
 
 export const CarDetails: React.FC = () => (
   <Container>
@@ -64,5 +67,11 @@ export const CarDetails: React.FC = () => (
         Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
       </About>
     </Content>
+
+    <Footer>
+      <FooterContent>
+        <Button title="Enviar" />
+      </FooterContent>
+    </Footer>
   </Container>
 )

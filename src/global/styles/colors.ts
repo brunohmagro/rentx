@@ -10,5 +10,6 @@ export default {
   line: '#EBEBF0',
   success: '#03B252',
   shape: '#E1E1E8',
+  shape_light: '#f3f3f3',
   shape_dark: '#29292E',
 }
