@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native'
 
 import { BackButton } from '../../components/BackButton'
 import { Button } from '../../components/Button'
+import { Calendar } from '../../components/Calendar'
 
 import ArrowSvg from '../../assets/arrow.svg'
 
@@ -54,7 +55,9 @@ export const Scheduling: React.FC = () => {
         </HeaderContainer>
       </Header>
 
-      <Content></Content>
+      <Content>
+        <Calendar />
+      </Content>
 
       <Footer>
         <ContentFooter>
