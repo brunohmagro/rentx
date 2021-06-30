@@ -10,7 +10,7 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo'
 
-import { Scheduling } from './src/screens/Scheduling'
+import { SchedulingDetails } from './src/screens/SchedulingDetails'
 
 import theme from './src/global/styles/theme'
 
@@ -29,7 +29,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Scheduling />
+      <SchedulingDetails />
     </ThemeProvider>
   )
 }
