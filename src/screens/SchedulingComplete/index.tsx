@@ -1,4 +1,5 @@
 import React from 'react'
+import { StatusBar } from 'react-native'
 import { useWindowDimensions } from 'react-native'
 
 import { Container, Content, Title, Message, Footer } from './styles'
@@ -12,6 +13,8 @@ export const SchedulingComplete: React.FC = () => {
   const { width } = useWindowDimensions()
   return (
     <Container>
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+
       <BrandSvg width={width} />
 
       <Content>
