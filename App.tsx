@@ -11,7 +11,7 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo'
 
-import { SchedulingComplete } from './src/screens/SchedulingComplete'
+import { Routes } from './src/routes'
 
 import theme from './src/global/styles/theme'
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SchedulingComplete />
+      <Routes />
     </ThemeProvider>
   )
 }
