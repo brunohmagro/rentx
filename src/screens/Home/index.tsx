@@ -1,5 +1,6 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 import { Container, Header, HeaderContent, TotalCars, CarList } from './styles'
@@ -10,6 +11,8 @@ import { Car } from '../../components/Car'
 import { CarProps } from '../../components/Car/interfaces'
 
 export const Home: React.FC = () => {
+  const navigation = useNavigation()
+
   const car: CarProps[] = [
     {
       brand: 'audi',
@@ -40,6 +43,10 @@ export const Home: React.FC = () => {
     },
   ]
 
+  const handleCarDetails = () => {
+    navigation.navigate('CarDetails')
+  }
+
   return (
     <Container>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
@@ -53,7 +60,13 @@ export const Home: React.FC = () => {
         data={car}
         keyExtractor={item => item.brand}
         renderItem={({ item }) => (
-          <Car brand={item.brand} name={item.name} thumbnail={item.thumbnail} rent={item.rent} />
+          <Car
+            brand={item.brand}
+            name={item.name}
+            thumbnail={item.thumbnail}
+            rent={item.rent}
+            onPress={handleCarDetails}
+          />
         )}
       />
     </Container>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import { BackButton } from '../../components/BackButton'
 import { Button } from '../../components/Button'
@@ -23,12 +24,22 @@ import {
 } from './styles'
 
 export const Scheduling: React.FC = () => {
+  const navigation = useNavigation()
+
+  const handleConfirmRental = () => {
+    navigation.navigate('SchedulingDetails')
+  }
+
+  const handleGoBack = () => {
+    navigation.goBack()
+  }
+
   return (
     <Container>
       <StatusBar translucent barStyle="light-content" backgroundColor="transparent" />
       <Header>
         <HeaderContainer>
-          <BackButton onPress={() => console.log('Quero voltar')} size={35} />
+          <BackButton onPress={handleGoBack} size={35} />
           <Title>
             Escolha uma{'\n'}
             data de início e{'\n'}
@@ -61,7 +72,7 @@ export const Scheduling: React.FC = () => {
 
       <Footer>
         <ContentFooter>
-          <Button title="Confirmar" />
+          <Button title="Confirmar" onPress={handleConfirmRental} />
         </ContentFooter>
       </Footer>
     </Container>

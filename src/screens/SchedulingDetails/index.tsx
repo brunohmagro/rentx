@@ -1,4 +1,6 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { StatusBar } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize'
 
@@ -42,69 +44,83 @@ import {
 import { Button } from '../../components/Button'
 import theme from '../../global/styles/theme'
 
-export const SchedulingDetails: React.FC = () => (
-  <Container>
-    <Header>
-      <ButtonContainer>
-        <BackButton onPress={() => console.log('Quero voltar')} size={35} />
-      </ButtonContainer>
-    </Header>
+export const SchedulingDetails: React.FC = () => {
+  const navigation = useNavigation()
 
-    <ImageSlider imageUrl={['https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png']} />
+  const handleRentalConfirm = () => {
+    navigation.navigate('SchedulingComplete')
+  }
 
-    <Content>
-      <Details>
-        <Desciption>
-          <Brand>Lamborgini</Brand>
-          <Name>Huracan</Name>
-        </Desciption>
+  const handleGoBack = () => {
+    navigation.goBack()
+  }
 
-        <Rent>
-          <Period>Ao dia</Period>
-          <Price>R$ 580</Price>
-        </Rent>
-      </Details>
+  return (
+    <Container>
+      <StatusBar translucent barStyle="dark-content" backgroundColor="transparent" />
 
-      <Acessories>
-        <Acessory name="380Km/h" icon={speedSvg} />
-        <Acessory name="3.2s" icon={accelerationSvg} />
-        <Acessory name="800 HP" icon={forceSvg} />
-        <Acessory name="Gasolina" icon={gasolineSvg} />
-        <Acessory name="Auto" icon={exchangeSvg} />
-        <Acessory name="2 pessoas" icon={peopleSvg} />
-      </Acessories>
+      <Header>
+        <ButtonContainer>
+          <BackButton onPress={handleGoBack} size={35} />
+        </ButtonContainer>
+      </Header>
 
-      <RentalPeriod>
-        <CalendarIcon>
-          <Feather name="calendar" size={RFValue(24)} color={theme.colors.shape} />
-        </CalendarIcon>
+      <ImageSlider imageUrl={['https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png']} />
 
-        <DateInfo>
-          <DateTitle>DE</DateTitle>
-          <DateValue>18/06/2021</DateValue>
-        </DateInfo>
+      <Content>
+        <Details>
+          <Desciption>
+            <Brand>Lamborgini</Brand>
+            <Name>Huracan</Name>
+          </Desciption>
 
-        <Feather name="chevron-right" size={RFValue(10)} color={theme.colors.text} />
+          <Rent>
+            <Period>Ao dia</Period>
+            <Price>R$ 580</Price>
+          </Rent>
+        </Details>
 
-        <DateInfo>
-          <DateTitle>DE</DateTitle>
-          <DateValue>18/06/2021</DateValue>
-        </DateInfo>
-      </RentalPeriod>
+        <Acessories>
+          <Acessory name="380Km/h" icon={speedSvg} />
+          <Acessory name="3.2s" icon={accelerationSvg} />
+          <Acessory name="800 HP" icon={forceSvg} />
+          <Acessory name="Gasolina" icon={gasolineSvg} />
+          <Acessory name="Auto" icon={exchangeSvg} />
+          <Acessory name="2 pessoas" icon={peopleSvg} />
+        </Acessories>
 
-      <RentalPrice>
-        <RentalPriceLabel>Total</RentalPriceLabel>
-        <RentalPriceDetails>
-          <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
-          <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
-        </RentalPriceDetails>
-      </RentalPrice>
-    </Content>
+        <RentalPeriod>
+          <CalendarIcon>
+            <Feather name="calendar" size={RFValue(24)} color={theme.colors.shape} />
+          </CalendarIcon>
 
-    <Footer>
-      <FooterContent>
-        <Button title="Enviar" />
-      </FooterContent>
-    </Footer>
-  </Container>
-)
+          <DateInfo>
+            <DateTitle>DE</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+
+          <Feather name="chevron-right" size={RFValue(10)} color={theme.colors.text} />
+
+          <DateInfo>
+            <DateTitle>DE</DateTitle>
+            <DateValue>18/06/2021</DateValue>
+          </DateInfo>
+        </RentalPeriod>
+
+        <RentalPrice>
+          <RentalPriceLabel>Total</RentalPriceLabel>
+          <RentalPriceDetails>
+            <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
+            <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+          </RentalPriceDetails>
+        </RentalPrice>
+      </Content>
+
+      <Footer>
+        <FooterContent>
+          <Button title="Alugar agora" color={theme.colors.success} onPress={handleRentalConfirm} />
+        </FooterContent>
+      </Footer>
+    </Container>
+  )
+}

@@ -17,9 +17,9 @@ import GasolineSvg from '../../assets/gasoline.svg'
 
 import { CarProps } from './interfaces'
 
-export const Car: React.FC<CarProps> = ({ brand, name, rent, thumbnail }: CarProps) => {
+export const Car: React.FC<CarProps> = ({ brand, name, rent, thumbnail, ...rest }: CarProps) => {
   return (
-    <Container>
+    <Container {...rest}>
       <Details>
         <Brand>{brand}</Brand>
         <Name>{name}</Name>

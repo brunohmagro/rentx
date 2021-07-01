@@ -1,4 +1,6 @@
 import React from 'react'
+import { StatusBar } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import speedSvg from '../../assets/speed.svg'
 import accelerationSvg from '../../assets/acceleration.svg'
@@ -30,48 +32,62 @@ import {
 } from './styles'
 import { Button } from '../../components/Button'
 
-export const CarDetails: React.FC = () => (
-  <Container>
-    <Header>
-      <ButtonContainer>
-        <BackButton onPress={() => console.log('Quero voltar')} size={35} />
-      </ButtonContainer>
-    </Header>
+export const CarDetails: React.FC = () => {
+  const navigation = useNavigation()
 
-    <ImageSlider imageUrl={['https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png']} />
+  const handleSelectRentalPeriod = () => {
+    navigation.navigate('Scheduling')
+  }
 
-    <Content>
-      <Details>
-        <Desciption>
-          <Brand>Lamborgini</Brand>
-          <Name>Huracan</Name>
-        </Desciption>
+  const handleGoBack = () => {
+    navigation.goBack()
+  }
 
-        <Rent>
-          <Period>Ao dia</Period>
-          <Price>R$ 580</Price>
-        </Rent>
-      </Details>
+  return (
+    <Container>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
 
-      <Acessories>
-        <Acessory name="380Km/h" icon={speedSvg} />
-        <Acessory name="3.2s" icon={accelerationSvg} />
-        <Acessory name="800 HP" icon={forceSvg} />
-        <Acessory name="Gasolina" icon={gasolineSvg} />
-        <Acessory name="Auto" icon={exchangeSvg} />
-        <Acessory name="2 pessoas" icon={peopleSvg} />
-      </Acessories>
+      <Header>
+        <ButtonContainer>
+          <BackButton onPress={handleGoBack} size={35} />
+        </ButtonContainer>
+      </Header>
 
-      <About>
-        Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real
-        Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
-      </About>
-    </Content>
+      <ImageSlider imageUrl={['https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png']} />
 
-    <Footer>
-      <FooterContent>
-        <Button title="Enviar" />
-      </FooterContent>
-    </Footer>
-  </Container>
-)
+      <Content>
+        <Details>
+          <Desciption>
+            <Brand>Lamborgini</Brand>
+            <Name>Huracan</Name>
+          </Desciption>
+
+          <Rent>
+            <Period>Ao dia</Period>
+            <Price>R$ 580</Price>
+          </Rent>
+        </Details>
+
+        <Acessories>
+          <Acessory name="380Km/h" icon={speedSvg} />
+          <Acessory name="3.2s" icon={accelerationSvg} />
+          <Acessory name="800 HP" icon={forceSvg} />
+          <Acessory name="Gasolina" icon={gasolineSvg} />
+          <Acessory name="Auto" icon={exchangeSvg} />
+          <Acessory name="2 pessoas" icon={peopleSvg} />
+        </Acessories>
+
+        <About>
+          Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real
+          Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
+        </About>
+      </Content>
+
+      <Footer>
+        <FooterContent>
+          <Button title="Escolher período do aluguel" onPress={handleSelectRentalPeriod} />
+        </FooterContent>
+      </Footer>
+    </Container>
+  )
+}
