@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StatusBar } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
+
+import { api } from '../../service/api'
 
 import { Container, Header, HeaderContent, TotalCars, CarList } from './styles'
 
@@ -9,43 +11,28 @@ import Logo from '../../assets/logo.svg'
 
 import { Car } from '../../components/Car'
 import { CarProps } from '../../components/Car/interfaces'
+import { useState } from 'react'
+import { Load } from '../../components/Load'
 
 export const Home: React.FC = () => {
   const navigation = useNavigation()
-
-  const car: CarProps[] = [
-    {
-      brand: 'audi',
-      name: 'RS 5 coupé',
-      rent: {
-        period: 'Ao dia',
-        price: 120,
-      },
-      thumbnail: 'https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png',
-    },
-    {
-      brand: 'audi1',
-      name: 'RS 5 coupé',
-      rent: {
-        period: 'Ao dia',
-        price: 120,
-      },
-      thumbnail: 'https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png',
-    },
-    {
-      brand: 'audi2',
-      name: 'RS 5 coupé',
-      rent: {
-        period: 'Ao dia',
-        price: 120,
-      },
-      thumbnail: 'https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png',
-    },
-  ]
+  const [isLoading, setIsLoading] = useState(true)
+  const [cars, setCars] = useState<CarProps[]>([])
 
   const handleCarDetails = () => {
     navigation.navigate('CarDetails')
   }
+
+  useEffect(() => {
+    try {
+      api.get<CarProps[]>('/cars').then(response => {
+        setCars(response.data)
+        setIsLoading(false)
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
 
   return (
     <Container>
@@ -56,19 +43,24 @@ export const Home: React.FC = () => {
           <TotalCars>Total de 12 carros</TotalCars>
         </HeaderContent>
       </Header>
-      <CarList
-        data={car}
-        keyExtractor={item => item.brand}
-        renderItem={({ item }) => (
-          <Car
-            brand={item.brand}
-            name={item.name}
-            thumbnail={item.thumbnail}
-            rent={item.rent}
-            onPress={handleCarDetails}
-          />
-        )}
-      />
+
+      {isLoading ? (
+        <Load />
+      ) : (
+        <CarList
+          data={cars}
+          keyExtractor={item => item.brand}
+          renderItem={({ item }) => (
+            <Car
+              brand={item.brand}
+              name={item.name}
+              thumbnail={item.thumbnail}
+              rent={item.rent}
+              onPress={handleCarDetails}
+            />
+          )}
+        />
+      )}
     </Container>
   )
 }
