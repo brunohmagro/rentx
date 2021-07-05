@@ -27,4 +27,5 @@ export interface CarProps extends RectButtonProps {
   name: string
   rent: Rent
   thumbnail: string
+  fuel_type: string
 }

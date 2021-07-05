@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { getAcessoryIcon } from '../../utils/getAcessoryIcons'
+
 import {
   Container,
   Details,
@@ -13,11 +15,17 @@ import {
   CarImage,
 } from './styles'
 
-import GasolineSvg from '../../assets/gasoline.svg'
-
 import { CarProps } from './interfaces'
 
-export const Car: React.FC<CarProps> = ({ brand, name, rent, thumbnail, ...rest }: CarProps) => {
+export const Car: React.FC<CarProps> = ({
+  brand,
+  name,
+  rent,
+  thumbnail,
+  fuel_type,
+  ...rest
+}: CarProps) => {
+  const MotorIcon = getAcessoryIcon(fuel_type)
   return (
     <Container {...rest}>
       <Details>
@@ -31,7 +39,7 @@ export const Car: React.FC<CarProps> = ({ brand, name, rent, thumbnail, ...rest 
           </Rent>
 
           <Type>
-            <GasolineSvg />
+            <MotorIcon />
           </Type>
         </About>
       </Details>

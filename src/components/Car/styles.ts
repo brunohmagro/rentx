@@ -59,6 +59,7 @@ export const Price = styled.Text`
 
 export const Type = styled.View`
   margin-top: auto;
+  margin-left: ${RFValue(25)}px;
 `
 
 export const CarImage = styled.Image`

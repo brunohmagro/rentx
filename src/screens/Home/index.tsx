@@ -57,6 +57,7 @@ export const Home: React.FC = () => {
               name={item.name}
               thumbnail={item.thumbnail}
               rent={item.rent}
+              fuel_type={item.fuel_type}
               onPress={() => handleCarDetails(item)}
             />
           )}

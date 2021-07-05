@@ -3,13 +3,7 @@ import { StatusBar } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { CarDto } from '../../components/Car/interfaces'
-
-import speedSvg from '../../assets/speed.svg'
-import accelerationSvg from '../../assets/acceleration.svg'
-import forceSvg from '../../assets/force.svg'
-import gasolineSvg from '../../assets/gasoline.svg'
-import exchangeSvg from '../../assets/exchange.svg'
-import peopleSvg from '../../assets/people.svg'
+import { getAcessoryIcon } from '../../utils/getAcessoryIcons'
 
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider'
@@ -78,7 +72,11 @@ export const CarDetails: React.FC = () => {
 
         <Accessories>
           {car.accessories.map(acessory => (
-            <Acessory key={acessory.type} name={acessory.name} icon={speedSvg} />
+            <Acessory
+              key={acessory.type}
+              name={acessory.name}
+              icon={getAcessoryIcon(acessory.type)}
+            />
           ))}
         </Accessories>
 
