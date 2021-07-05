@@ -10,7 +10,7 @@ export interface Acessory {
   name: string
 }
 
-export interface CarProps extends RectButtonProps {
+export interface CarDto {
   id: string
   brand: string
   name: string
@@ -20,4 +20,11 @@ export interface CarProps extends RectButtonProps {
   thumbnail: string
   accessories: Acessory[]
   photos: string[]
+}
+
+export interface CarProps extends RectButtonProps {
+  brand: string
+  name: string
+  rent: Rent
+  thumbnail: string
 }

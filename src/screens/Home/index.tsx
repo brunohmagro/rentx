@@ -10,22 +10,23 @@ import { Container, Header, HeaderContent, TotalCars, CarList } from './styles'
 import Logo from '../../assets/logo.svg'
 
 import { Car } from '../../components/Car'
-import { CarProps } from '../../components/Car/interfaces'
+import { CarDto } from '../../components/Car/interfaces'
 import { useState } from 'react'
 import { Load } from '../../components/Load'
+import { isTemplateLiteral } from 'typescript'
 
 export const Home: React.FC = () => {
   const navigation = useNavigation()
   const [isLoading, setIsLoading] = useState(true)
-  const [cars, setCars] = useState<CarProps[]>([])
+  const [cars, setCars] = useState<CarDto[]>([])
 
-  const handleCarDetails = () => {
-    navigation.navigate('CarDetails')
+  const handleCarDetails = (car: CarDto) => {
+    navigation.navigate('CarDetails', { car })
   }
 
   useEffect(() => {
     try {
-      api.get<CarProps[]>('/cars').then(response => {
+      api.get<CarDto[]>('/cars').then(response => {
         setCars(response.data)
         setIsLoading(false)
       })
@@ -40,7 +41,7 @@ export const Home: React.FC = () => {
       <Header>
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
-          <TotalCars>Total de 12 carros</TotalCars>
+          <TotalCars>Total de {cars.length} carros</TotalCars>
         </HeaderContent>
       </Header>
 
@@ -56,7 +57,7 @@ export const Home: React.FC = () => {
               name={item.name}
               thumbnail={item.thumbnail}
               rent={item.rent}
-              onPress={handleCarDetails}
+              onPress={() => handleCarDetails(item)}
             />
           )}
         />

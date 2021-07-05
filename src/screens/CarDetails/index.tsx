@@ -1,6 +1,8 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
+
+import { CarDto } from '../../components/Car/interfaces'
 
 import speedSvg from '../../assets/speed.svg'
 import accelerationSvg from '../../assets/acceleration.svg'
@@ -25,15 +27,21 @@ import {
   Rent,
   Period,
   Price,
-  Acessories,
+  Accessories,
   About,
   Footer,
   FooterContent,
 } from './styles'
 import { Button } from '../../components/Button'
 
+interface CarDetailsParamsProps {
+  car: CarDto
+}
+
 export const CarDetails: React.FC = () => {
   const navigation = useNavigation()
+  const route = useRoute()
+  const { car } = route.params as CarDetailsParamsProps
 
   const handleSelectRentalPeriod = () => {
     navigation.navigate('Scheduling')
@@ -53,34 +61,28 @@ export const CarDetails: React.FC = () => {
         </ButtonContainer>
       </Header>
 
-      <ImageSlider imageUrl={['https://freepikpsd.com/media/2020/01/White-Audi-Car-PNG.png']} />
+      <ImageSlider imageUrl={car.photos} />
 
       <Content>
         <Details>
           <Desciption>
-            <Brand>Lamborgini</Brand>
-            <Name>Huracan</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Desciption>
 
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$ 580</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>R$ {car.rent.price}</Price>
           </Rent>
         </Details>
 
-        <Acessories>
-          <Acessory name="380Km/h" icon={speedSvg} />
-          <Acessory name="3.2s" icon={accelerationSvg} />
-          <Acessory name="800 HP" icon={forceSvg} />
-          <Acessory name="Gasolina" icon={gasolineSvg} />
-          <Acessory name="Auto" icon={exchangeSvg} />
-          <Acessory name="2 pessoas" icon={peopleSvg} />
-        </Acessories>
+        <Accessories>
+          {car.accessories.map(acessory => (
+            <Acessory key={acessory.type} name={acessory.name} icon={speedSvg} />
+          ))}
+        </Accessories>
 
-        <About>
-          Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real
-          Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
-        </About>
+        <About>{car.about}</About>
       </Content>
 
       <Footer>
