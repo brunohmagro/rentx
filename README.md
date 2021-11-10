@@ -15,6 +15,13 @@
 
 This layout was developed by: [Rocketseat](https://github.com/Rocketseat)
 
+<div align="center">
+  <img src="/.github/images/home.png" width="200" title="Home">
+  <img src="/.github/images/carDetails.png" width="200" title="carDetails">
+  <img src="/.github/images/choosePeriod.png" width="200" title="choosePeriod">
+    <img src="/.github/images/resum.png" width="200" title="resum">
+</div>
+
 ## Technologies :books:
 
 - [React Native](https://reactnative.dev/)
