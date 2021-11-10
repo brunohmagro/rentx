@@ -7,7 +7,7 @@ import { getAcessoryIcon } from '../../utils/getAcessoryIcons'
 
 import { BackButton } from '../../components/BackButton'
 import { ImageSlider } from '../../components/ImageSlider'
-import { Acessory } from '../../components/Acessory'
+import { Accessory } from '../../components/Accessory'
 
 import {
   Container,
@@ -38,7 +38,7 @@ export const CarDetails: React.FC = () => {
   const { car } = route.params as CarDetailsParamsProps
 
   const handleSelectRentalPeriod = () => {
-    navigation.navigate('Scheduling')
+    navigation.navigate('Scheduling', { car })
   }
 
   const handleGoBack = () => {
@@ -72,7 +72,7 @@ export const CarDetails: React.FC = () => {
 
         <Accessories>
           {car.accessories.map(acessory => (
-            <Acessory
+            <Accessory
               key={acessory.type}
               name={acessory.name}
               icon={getAcessoryIcon(acessory.type)}

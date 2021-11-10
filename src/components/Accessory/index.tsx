@@ -4,7 +4,7 @@ import { Container, Name } from './styles'
 
 import { AcessoryProps } from './interfaces'
 
-export const Acessory: React.FC<AcessoryProps> = ({ name, icon: Icon }: AcessoryProps) => {
+export const Accessory: React.FC<AcessoryProps> = ({ name, icon: Icon }: AcessoryProps) => {
   return (
     <Container>
       <Icon width={32} height={32} />
