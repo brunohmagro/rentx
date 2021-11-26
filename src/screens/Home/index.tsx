@@ -19,7 +19,7 @@ import { Load } from '../../components/Load'
 export const Home: React.FC = () => {
   const navigation = useNavigation()
   const [isLoading, setIsLoading] = useState(true)
-  const [cars, setCars] = useState<CarDto[]>([])
+  const [cars, setCars] = useState<CarDto[]>([] as CarDto[])
 
   const theme = useTheme()
 

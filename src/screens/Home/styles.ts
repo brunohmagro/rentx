@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native'
+import { FlatList, FlatListProps } from 'react-native'
 import styled from 'styled-components/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { RectButton } from 'react-native-gesture-handler'
@@ -31,11 +31,13 @@ export const TotalCars = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary.regular};
 `
 
-export const CarList = styled(FlatList as new () => FlatList<CarDto>).attrs({
+export const CarList = styled(
+  FlatList as new (props: FlatListProps<CarDto>) => FlatList<CarDto>,
+).attrs({
   contentContainerStyle: {
     padding: 24,
   },
-  showVerticalScrollIndicator: false,
+  showsVerticalScrollIndicator: false,
 })``
 
 export const MyCarsButton = styled(RectButton)`
