@@ -34,8 +34,8 @@ export const Car: React.FC<CarProps> = ({
 
         <About>
           <Rent>
-            <Period>{rent.period}</Period>
-            <Price>{`R$ ${rent.price}`}</Price>
+            <Period>{rent ? rent.period : ''}</Period>
+            <Price>{`R$ ${rent ? rent.price : ''}`}</Price>
           </Rent>
 
           <Type>

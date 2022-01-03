@@ -17,12 +17,17 @@ import {
   Appointments,
   AppointmentTitle,
   AppointmentQuantity,
-  ListCar,
 } from './styles'
 import { Car } from '../../components/Car'
 
+interface CarProps {
+    id: string;
+    user_id: string;
+    car: CarDto;
+}
+
 export const MyCars: React.FC = () => {
-  const [cars, setCars] = useState<CarDto[]>([])
+  const [cars, setCars] = useState<CarProps[]>([])
   const [loading, setLoading] = useState(true)
 
   const navigation = useNavigation()
@@ -31,7 +36,7 @@ export const MyCars: React.FC = () => {
   useEffect(() => {
     ;(async () => {
       try {
-        const response = await api.get<CarDto[]>('/schedules_byuser?user_id=1')
+        const response = await api.get<CarProps[]>('/schedules_byuser?user_id=1')
         setCars(response.data)
       } catch (e) {
         console.log(e)
@@ -71,18 +76,18 @@ export const MyCars: React.FC = () => {
           <AppointmentQuantity>05</AppointmentQuantity>
         </Appointments>
 
-        <ListCar
+        <FlatList
           data={cars}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.car.id}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <Car
-              brand={item.brand}
-              name={item.name}
-              thumbnail={item.thumbnail}
-              rent={item.rent}
-              fuel_type={item.fuel_type}
-              onPress={() => handleCarDetails(item)}
+              brand={item.car.brand}
+              name={item.car.name}
+              thumbnail={item.car.thumbnail}
+              rent={item.car.rent}
+              fuel_type={item.car.fuel_type}
+              onPress={() => handleCarDetails(item.car)}
             />
           )}
         />
