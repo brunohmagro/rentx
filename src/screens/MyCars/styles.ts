@@ -75,3 +75,35 @@ export const ListCar = styled(
   },
   showsVerticalScrollIndicator: false,
 })``
+
+export const CarWrapper = styled.View`
+  margin-bottom: ${RFValue(16)}px;
+`
+
+export const CarWrapperFooter = styled.View`
+  padding: ${RFValue(12)}px;
+  margin-top: -10px;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  background: ${({ theme }) => theme.colors.background_secondary};
+`
+
+export const CarWrapperFooterTitle = styled.Text`
+  color: ${({ theme }) => theme.colors.text_detail};
+  font-family: ${({ theme }) => theme.fonts.secondary.medium};
+  font-size: ${RFValue(12)}px;
+`
+
+export const CarWrapperFooterPeriod = styled.View`
+  align-items: center;
+  flex-direction: row;
+`
+
+export const CarWrapperFooterPeriodDate = styled.Text`
+  color: ${({ theme }) => theme.colors.text_detail};
+  font-family: ${({ theme }) => theme.fonts.primary.medium};
+  font-size: ${RFValue(13)}px;
+`
