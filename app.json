@@ -7,6 +7,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "com.brunohmagro.rentx"
+    },
+    "ios": {
+      "bundleIdentifier": "com.brunohmagro.rentx"
+    }
   }
 }

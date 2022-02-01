@@ -1,4 +1,4 @@
-package com.rentx;
+package com.brunohmagro.rentx;
 
 import android.os.Bundle;
 
