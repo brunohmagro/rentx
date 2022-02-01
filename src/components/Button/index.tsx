@@ -1,4 +1,6 @@
 import React from 'react'
+import { ActivityIndicator } from 'react-native'
+import { useTheme } from 'styled-components'
 
 import { ButtonProps } from './interfaces'
 
@@ -8,9 +10,18 @@ export const Button: React.FC<ButtonProps> = ({
   title,
   color,
   enabled = true,
+  loading = false,
   ...rest
-}: ButtonProps) => (
-  <Container {...rest} color={color} enabled={enabled} style={{ opacity: enabled ? 1 : 0.5 }}>
-    <Title>{title}</Title>
-  </Container>
-)
+}: ButtonProps) => {
+  const theme = useTheme()
+
+  return (
+    <Container
+      {...rest}
+      color={color}
+      enabled={enabled}
+      style={{ opacity: enabled === false || loading === true ? 0.5 : 1 }}>
+      {loading ? <ActivityIndicator color={theme.colors.shape} /> : <Title>{title}</Title>}
+    </Container>
+  )
+}

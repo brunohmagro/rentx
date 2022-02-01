@@ -4,6 +4,7 @@ export interface ButtonProps extends RectButtonProps {
   title: string
   color?: string
   enabled?: boolean
+  loading?: boolean
 }
 
 export interface ButtonStyleProps {
