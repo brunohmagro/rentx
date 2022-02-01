@@ -123,7 +123,11 @@ export const Scheduling: React.FC = () => {
 
       <Footer>
         <ContentFooter>
-          <Button title="Confirmar" onPress={handleConfirmRental} />
+          <Button
+            title="Confirmar"
+            onPress={handleConfirmRental}
+            enabled={!!rentalPeriod.endFormatted}
+          />
         </ContentFooter>
       </Footer>
     </Container>
