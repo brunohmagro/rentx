@@ -7,7 +7,7 @@ import { useTheme } from 'styled-components'
 import { CarDto } from '../../components/Car/interfaces'
 import { api } from '../../service/api'
 import { BackButton } from '../../components/BackButton'
-import { Load } from '../../components/Load'
+import { LoadAnimation } from '../../components/LoadAnimation'
 
 import {
   Container,
@@ -80,7 +80,7 @@ export const MyCars: React.FC = () => {
       </Header>
 
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <Content>
           <Appointments>

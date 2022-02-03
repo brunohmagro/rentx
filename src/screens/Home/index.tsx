@@ -21,7 +21,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { Car } from '../../components/Car'
 import { CarDto } from '../../components/Car/interfaces'
 import { useState } from 'react'
-import { Load } from '../../components/Load'
+import { LoadAnimation } from '../../components/LoadAnimation'
 
 export const Home: React.FC = () => {
   const navigation = useNavigation()
@@ -84,7 +84,7 @@ export const Home: React.FC = () => {
       </Header>
 
       {isLoading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <CarList
           data={cars}
