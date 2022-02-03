@@ -2,6 +2,8 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 
+import Animated from 'react-native-reanimated'
+
 export const Container = styled.View`
   flex: 1;
   background: ${({ theme }) => theme.colors.background_secondary};
@@ -16,7 +18,7 @@ export const ButtonContainer = styled.View`
   margin-left: ${RFValue(8)}px;
 `
 
-export const Content = styled.ScrollView.attrs({
+export const Content = styled(Animated.ScrollView).attrs({
   contentContainerStyle: {
     padding: 24,
     alimItems: 'center',
@@ -30,6 +32,8 @@ export const Details = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  margin-top: ${RFValue(15)}px;
 `
 
 export const Desciption = styled.View``

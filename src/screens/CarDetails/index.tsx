@@ -2,6 +2,14 @@ import React from 'react'
 import { StatusBar } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
+import Animated, {
+  useAnimatedScrollHandler,
+  useSharedValue,
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
+} from 'react-native-reanimated'
+
 import { CarDto } from '../../components/Car/interfaces'
 import { getAcessoryIcon } from '../../utils/getAcessoryIcons'
 
@@ -37,6 +45,24 @@ export const CarDetails: React.FC = () => {
   const route = useRoute()
   const { car } = route.params as CarDetailsParamsProps
 
+  const scrollY = useSharedValue(0)
+
+  const handleScroll = useAnimatedScrollHandler(event => {
+    scrollY.value = event.contentOffset.y
+  })
+
+  const headerStyleAnimation = useAnimatedStyle(() => {
+    return {
+      height: interpolate(scrollY.value, [0, 200], [200, 85], Extrapolate.CLAMP),
+    }
+  })
+
+  const sliderCarsStyleAnimation = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolate.CLAMP),
+    }
+  })
+
   const handleSelectRentalPeriod = () => {
     navigation.navigate('Scheduling', { car })
   }
@@ -49,15 +75,19 @@ export const CarDetails: React.FC = () => {
     <Container>
       <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
 
-      <Header>
-        <ButtonContainer>
-          <BackButton onPress={handleGoBack} size={35} />
-        </ButtonContainer>
-      </Header>
+      <Animated.View style={headerStyleAnimation}>
+        <Header>
+          <ButtonContainer>
+            <BackButton onPress={handleGoBack} size={35} />
+          </ButtonContainer>
+        </Header>
 
-      <ImageSlider imageUrl={car.photos} />
+        <Animated.View style={sliderCarsStyleAnimation}>
+          <ImageSlider imageUrl={car.photos} />
+        </Animated.View>
+      </Animated.View>
 
-      <Content>
+      <Content onScroll={handleScroll} scrollEventThrottle={16}>
         <Details>
           <Desciption>
             <Brand>{car.brand}</Brand>
@@ -80,6 +110,8 @@ export const CarDetails: React.FC = () => {
           ))}
         </Accessories>
 
+        <About>{car.about}</About>
+        <About>{car.about}</About>
         <About>{car.about}</About>
       </Content>
 
