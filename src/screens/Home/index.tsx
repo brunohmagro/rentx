@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, BackHandler } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { useTheme } from 'styled-components/native'
@@ -9,7 +9,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   useAnimatedGestureHandler,
-  withSpring,
 } from 'react-native-reanimated'
 
 import { api } from '../../service/api'
@@ -68,6 +67,10 @@ export const Home: React.FC = () => {
     } catch (error) {
       console.error(error)
     }
+  }, [])
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
   }, [])
 
   return (
