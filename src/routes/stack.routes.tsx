@@ -15,7 +15,13 @@ const { Navigator, Screen } = createStackNavigator()
 export const StackRoutes = () => {
   return (
     <Navigator headerMode="none" initialRouteName="Splash">
-      <Screen name="Splash" component={Splash} />
+      <Screen
+        name="Splash"
+        component={Splash}
+        options={{
+          gestureEnabled: false,
+        }}
+      />
       <Screen
         name="Home"
         component={Home}

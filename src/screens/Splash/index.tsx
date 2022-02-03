@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { BackHandler } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 
 import BrandSvg from '../../assets/brand.svg'
@@ -50,6 +51,10 @@ export const Splash: React.FC = () => {
       'worklet'
       runOnJS(startApp)()
     })
+  }, [])
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', () => true)
   }, [])
 
   return (
