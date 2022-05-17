@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import { ENVIRONMENT_NAME, PROTOCOL, HOST, HOST_PORT, BASE_URL } from '@env'
 
 import { baseUrlProps } from './interfaces'

@@ -11,6 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
   color,
   enabled = true,
   loading = false,
+  light = false,
   ...rest
 }: ButtonProps) => {
   const theme = useTheme()
@@ -21,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
       color={color}
       enabled={enabled}
       style={{ opacity: enabled === false || loading === true ? 0.5 : 1 }}>
-      {loading ? <ActivityIndicator color={theme.colors.shape} /> : <Title>{title}</Title>}
+      {loading ? <ActivityIndicator color={theme.colors.shape} /> : <Title light={light}>{title}</Title>}
     </Container>
   )
 }

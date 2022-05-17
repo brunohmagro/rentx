@@ -16,8 +16,8 @@ export const Container = styled(RectButton)<ButtonStyleProps>`
   border-radius: ${RFValue(5)}px;
 `
 
-export const Title = styled.Text`
+export const Title = styled.Text<ButtonStyleProps>`
   font-family: ${({ theme }) => theme.fonts.primary.regular};
   font-size: ${RFValue(15)}px;
-  color: ${({ theme }) => theme.colors.shape_light};
+  color: ${({ theme, light }) => light ? theme.colors.shape_dark : theme.colors.shape};
 `
