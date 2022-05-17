@@ -13,7 +13,7 @@ export const Container = styled.View`
 `
 export const Header = styled.View`
   width: 100%;
-  margin-top: ${RFValue(115)}px;
+  margin-top: ${RFValue(104)}px;
 `
 
 export const Title = styled.Text`
@@ -28,6 +28,14 @@ export const SubTitle = styled.Text`
   line-height: ${RFValue(25)}px;
 
   margin-top: ${RFValue(16)}px;
+`
+
+export const Form = styled.View`
+  width: 100%;
+  margin: ${RFValue(64)}px 0;
+
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const Footer = styled.View``

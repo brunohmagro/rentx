@@ -3,8 +3,10 @@ import { StatusBar } from 'react-native'
 import { useTheme } from 'styled-components'
 
 import { Button } from '../../components/Button'
+import { Input } from '../../components/Input'
+import { PasswordInput } from '../../components/PasswordInput'
 
-import { SafeView, Container, Header, Title, SubTitle, Footer } from './styles'
+import { SafeView, Container, Header, Title, SubTitle, Form, Footer } from './styles'
 
 export const SignIn: React.FC = () => {
   const theme = useTheme()
@@ -19,6 +21,22 @@ export const SignIn: React.FC = () => {
           uma experiência incrível.
         </SubTitle>
       </Header>
+
+      <Form>
+        <Input
+          iconName='mail'
+          placeholder='E-mail'
+          keyboardType='email-address'
+          autoCorrect={false}
+          autoCapitalize='none'
+        />
+
+        <PasswordInput
+          iconName='lock'
+          placeholder='Senha'
+        />
+      </Form>
+
 
       <Footer>
         <Button
